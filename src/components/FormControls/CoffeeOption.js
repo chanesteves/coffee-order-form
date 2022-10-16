@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from 'react';
-
 import styled from 'styled-components';
 
 import settings from '../../data/settings.json';
 
 function CoffeeOption(props) {
-    const [hotQty, setHotQty] = useState(0);
-    const [coldQty, setColdQty] = useState(0);
-
     const intMaxItem = settings.maxItem;
     let arrIntQtyOptions = [];
 
@@ -20,7 +15,7 @@ function CoffeeOption(props) {
             <div className="row">
                 <div className="col-lg-5 col-md-12">
                     <div>
-                        <div className="coffee-image"><img src={props.image} /></div>
+                        <div className="coffee-image"><img src={props.image} alt={props.name} /></div>
                         <div className="coffee-details">
                             <div>
                                 <h3>{props.name}</h3>

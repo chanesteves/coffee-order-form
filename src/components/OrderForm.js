@@ -10,6 +10,10 @@ import CoffeeOption from './FormControls/CoffeeOption';
 import menu from '../data/menu.json';
 import settings from '../data/settings.json';
 
+import {
+    submitOrder,
+} from '../actions/order'
+
 function OrderForm() {
     const arrStrPickUpDayOptions = ["Today", "Tomorrow"];
     let arrObjPickUpTimeOptions = [{ value : Number.MAX_VALUE, display : "ASAP", disabled : false }];
@@ -31,19 +35,17 @@ function OrderForm() {
     const [submitted, setSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
-    let intHour = settings.minHour;
-    let intMinute = 0;
     for(let intH = settings.minHour; intH <= settings.maxHour; intH++) {
+        if (intH === 18) {
+            break;
+        }
+        
         for(let intM = 0; intM < 60; intM += 15) {
             let strA = intH < 12 ? 'AM' : 'PM';
             let intN = intH <= 12 ? intH : (intH % 12);
             let strH = (intN < 10 ? '0' : '') + intN;
             let strM = ((intM % 60) < 10 ? '0' : '') + (intM % 60);
             arrObjPickUpTimeOptions.push({value : (intH * 60) + intM, display : strH + ":" + strM + " " + strA});
-
-            if (intH == 18) {
-                break;
-            }
         }
     }
 
@@ -79,7 +81,7 @@ function OrderForm() {
             intTotalQty += order[strKey].hot + order[strKey].cold;
         });
 
-        if (intTotalQty == 0) {
+        if (intTotalQty === 0) {
             strError = "You have no orders yet!";
             setError(strError);
             return;
@@ -94,8 +96,16 @@ function OrderForm() {
             totalAmt
         };
 
-        // TODO: Submit the form
+        // TODO: Submit the order
         console.log(data);
+        // submitOrder(e)
+        // .then(res => {
+        //     console.log(res);
+        // })
+        // .catch(err => {
+        //     console.log(err);
+        // })
+        // TODO: Submit the order
 
         setIsLoading(true);
         setTimeout(function () {
@@ -143,8 +153,8 @@ function OrderForm() {
                                     <div className="pickup-time">
                                     <select className="form-control" onChange={(e) => setPickUpTime(e.target.value)}>
                                         {arrObjPickUpTimeOptions.map((objPickUpTimeOption, intIndex) => {
-                                            if ((pickUpDay == 'tomorrow' && objPickUpTimeOption.value == Number.MAX_VALUE)
-                                                || (pickUpDay == 'today' && objPickUpTimeOption.value < intNowV)) {
+                                            if ((pickUpDay === 'tomorrow' && objPickUpTimeOption.value === Number.MAX_VALUE)
+                                                || (pickUpDay === 'today' && objPickUpTimeOption.value < intNowV)) {
                                                 return null;
                                             }
                 
