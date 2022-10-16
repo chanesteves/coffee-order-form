@@ -15,6 +15,6 @@
         "name" : "Black",
         "description" : "Regular black coffee",
         "image" : "/images/coffees/black.png",
-        "price" : 75
+        "price" : 65
     }
 ]
