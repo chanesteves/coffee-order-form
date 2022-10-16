@@ -39,7 +39,7 @@ function OrderForm() {
         if (intH === 18) {
             break;
         }
-        
+
         for(let intM = 0; intM < 60; intM += 15) {
             let strA = intH < 12 ? 'AM' : 'PM';
             let intN = intH <= 12 ? intH : (intH % 12);
@@ -185,7 +185,7 @@ function OrderForm() {
                             </div>
                             <hr/>
                             <div className="display-block">
-                                <div className="float-start">
+                                <div className="display-block">
                                     {error &&
                                         <div className="alert alert-danger"><FontAwesomeIcon icon={faTimesCircle} /> <b>Error: </b> {error}</div>
                                     }
