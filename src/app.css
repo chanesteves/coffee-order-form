@@ -1,0 +1,21 @@
+.app {
+  text-align: center;
+}
+
+.app-logo {
+  pointer-events: none;
+  height: 36px;
+}
+
+.app-header {
+  height: 150px;
+  padding: 57px 69px;
+  background: #AAC27F;
+  text-align: left;
+}
+
+@media only screen and (max-width: 960px) {
+  .app-header {
+    padding: 57px 30px;
+  }
+}

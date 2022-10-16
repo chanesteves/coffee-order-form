@@ -1,0 +1,20 @@
+[
+    {
+        "name" : "Americano",
+        "description" : "Rich espresso with water",
+        "image" : "/images/coffees/americano.png",
+        "price" : 75
+    },
+    {
+        "name" : "Latte",
+        "description" : "Rich espresso with creamy milk",
+        "image" : "/images/coffees/latte.png",
+        "price" : 85
+    },
+    {
+        "name" : "Black",
+        "description" : "Regular black coffee",
+        "image" : "/images/coffees/black.png",
+        "price" : 65
+    }
+]
